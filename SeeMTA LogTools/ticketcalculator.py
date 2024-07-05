@@ -32,8 +32,13 @@ def get_tickets(logfile):
     return tickets
 
 
-for i in get_tickets(core.openFile("C:/SeeMTA/mta/logs/console-2024-07-05.log")):
-    print("\nTicket:")
+files = ["C:/SeeMTA/mta/logs/console-2024-07-05.log", "C:/SeeMTA/mta/logs/console-2024-07-04.log", "C:/SeeMTA/mta/logs/console-2024-07-03.log", "C:/SeeMTA/mta/logs/console-2024-07-01.log"]
+log = core.read_log_file(files)
+tickets = get_tickets(log)
+for i in tickets:
+    print("")
     print(i.issuer)
-    print(i.price)
     print(i.reason)
+    print(i.price)
+print("\nÖsszesen:")
+print(str(len(tickets)) + " darab")
